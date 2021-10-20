@@ -53,7 +53,6 @@ public class ClienteController {
 	
 	
 	
-	
 	@GetMapping(value="/uploads/{filename:.+}")
 	public ResponseEntity<Resource> verFoto(@PathVariable String filename){
 		Path pathFoto = Paths.get("uploads").resolve(filename).toAbsolutePath();

@@ -37,3 +37,12 @@ INSERT INTO productos (nombre, precio,create_at) VALUES ('Piano digital yamaha',
 INSERT INTO productos (nombre, precio,create_at) VALUES ('Parlantes activos bose', 4567834, now());
 INSERT INTO productos (nombre, precio,create_at) VALUES ('Amplificador marshall', 2045600, now());
 INSERT INTO productos (nombre, precio,create_at) VALUES ('Cueardas de guitarra electrica Fender', 5000, now());
+
+
+/*cargar facturas*/
+INSERT INTO facturas (descripcion, observacion,cliente_id, create_at) VALUES ('Factura instrumentos', null,1, now());
+INSERT INTO detalles_facturas (cantidad, factura_id,producto_id) VALUES (1,1,1);
+INSERT INTO detalles_facturas (cantidad, factura_id,producto_id) VALUES (1,1,2);
+INSERT INTO detalles_facturas (cantidad, factura_id,producto_id) VALUES (1,1,3);
+
+

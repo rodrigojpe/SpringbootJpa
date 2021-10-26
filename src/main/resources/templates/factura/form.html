@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<header  th:replace="layout/layout :: header"></header>
+
+
+<div class="container">
+
+	<div class="card">
+  <div class="card-header">
+    Facturas
+  </div>
+  <div class="card-body">
+  	<form th:action="@{/factura/form}"  th:object="${factura}" method="post">
+  		<div class="form-group row">
+  			<label class="col-sm-2 col-form-label" th:text="Descripcion"></label>
+  			<div class="col-sm-6">
+  				<input type="text" th:field="*{descripcion}" class="form-control">
+  			</div>
+  		</div>
+  		<div class="form-group row">
+  			<label class="col-sm-2 col-form-label" th:text="Observacion"></label>
+  			<div class="col-sm-6">
+  				<textarea type="text" th:field="*{observacion}" class="form-control"></textarea>
+  			</div>
+  		</div>
+  		
+  		<div class="form-group row">
+  			<label class="col-sm-2 col-form-label" th:text="Descripcion"></label>
+  			<div class="col-sm-6">
+  				<input type="submit" th:value="${titulo}" class="btn btn-secondary">
+  			</div>
+  		</div>
+  	</form>
+
+  </div>
+</div>
+</div>
+
+</body>
+</html>

@@ -50,7 +50,7 @@ public class Cliente  implements Serializable{
 	
 	private String foto;
 
-	@OneToMany(mappedBy = "cliente",  fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Factura> facturas;
 	
 	
@@ -166,26 +166,22 @@ public class Cliente  implements Serializable{
 		this.foto = foto;
 	}
 
-
-
+	
 
 	public List<Factura> getFacturas() {
 		return facturas;
 	}
 
-
-
-
-
 	public void setFacturas(List<Factura> facturas) {
 		this.facturas = facturas;
 	}
 
-	
-	public void addFactura(Factura factura) {
-		
-		facturas.add(factura);
-	}
+
+
+
+
+
+
 
 
 	private static final long serialVersionUID = 1L;

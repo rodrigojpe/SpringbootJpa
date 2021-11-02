@@ -17,18 +17,48 @@
   </div>
   <div class="card-body">
   	<form th:action="@{/factura/form}"  th:object="${factura}" method="post">
+  	
   		<div class="form-group row">
-  			<label class="col-sm-2 col-form-label" th:text="Descripcion"></label>
+  			<label class="col-sm-2 col-form-label" th:text="'Cliente'"></label>
+  			<div class="col-sm-6">
+  				<input th:value="${factura.cliente.nombre} + ' ' + ${factura.cliente.apellido} "
+  				 class="form-control" disabled="disabled">
+  			</div>
+  		</div>
+  	
+  		<div class="form-group row">
+  			<label class="col-sm-2 col-form-label" th:text="'Descripcion'"></label>
   			<div class="col-sm-6">
   				<input type="text" th:field="*{descripcion}" class="form-control">
   			</div>
   		</div>
   		<div class="form-group row">
-  			<label class="col-sm-2 col-form-label" th:text="Observacion"></label>
+  			<label class="col-sm-2 col-form-label" th:text="'Observacion'"></label>
   			<div class="col-sm-6">
   				<textarea type="text" th:field="*{observacion}" class="form-control"></textarea>
   			</div>
   		</div>
+  		
+  		<div class="form-group row">
+  			<label class="col-sm-2 col-form-label" for="buscar_producto" th:text="'Buscar Producto'"></label>
+  			<div class="col-sm-6">
+  				<input type="text" id="buscar_producto" name="buscar_producto"    class="form-control"/>
+  			</div>
+  		</div>
+  		
+  		<table th:replace="factura/plantilla-items :: itemsFactura"></table>
+  		
+  		<table id="cargarItemProductos" class="table">
+  			<thead>
+  				<tr>
+  					<th></th>
+  					<th></th>
+  					<th></th>
+  				</tr>
+  			</thead>
+  			<tbody>
+  			</tbody>
+  		</table>
   		
   		<div class="form-group row">
   			<label class="col-sm-2 col-form-label" th:text="Descripcion"></label>
@@ -41,6 +71,10 @@
   </div>
 </div>
 </div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+
+ <script  th:replace="factura/js/autocomplete-productos :: javascript"></script> 
 
 </body>
 </html>

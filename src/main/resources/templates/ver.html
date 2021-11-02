@@ -6,7 +6,11 @@
 <body>
 
 	<header th:replace="layout/layout :: header"></header>
-
+	<br>
+	
+	<h4 class="card-title">
+		<a class="btn btn-light btn-xs" th:href="@{'/facturas/form/' + ${cliente.id}}" th:text="'Crear Factura'"></a>
+	</h4>
 
 	<div class=" container py-4">
 

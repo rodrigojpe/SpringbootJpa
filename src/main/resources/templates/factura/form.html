@@ -16,7 +16,7 @@
     Facturas
   </div>
   <div class="card-body">
-  	<form th:action="@{/factura/form}"  th:object="${factura}" method="post">
+  	<form th:action="@{/facturas/form}"  th:object="${factura}" method="post">
   	
   		<div class="form-group row">
   			<label class="col-sm-2 col-form-label" th:text="'Cliente'"></label>
@@ -35,7 +35,7 @@
   		<div class="form-group row">
   			<label class="col-sm-2 col-form-label" th:text="'Observacion'"></label>
   			<div class="col-sm-6">
-  				<textarea type="text" th:field="*{observacion}" class="form-control"></textarea>
+  				<textarea  th:field="*{observacion}" class="form-control"></textarea>
   			</div>
   		</div>
   		
@@ -51,14 +51,17 @@
   		<table id="cargarItemProductos" class="table">
   			<thead>
   				<tr>
-  					<th></th>
-  					<th></th>
-  					<th></th>
+  					<th>Nombre</th>
+  					<th>Precio</th>
+  					<th>Cantidad</th>
+  					<th>Total</th>
+  					<th>Eliminar</th>
   				</tr>
   			</thead>
   			<tbody>
   			</tbody>
   		</table>
+  		<h5>Total<span class="badge bg-secondary" id="gran_total">0</span></h5>
   		
   		<div class="form-group row">
   			<label class="col-sm-2 col-form-label" th:text="Descripcion"></label>
@@ -72,8 +75,7 @@
 </div>
 </div>
 
-<footer th:replace="layout/layout :: footer"></footer>
-
+ <footer th:replace="layout/layout :: footer"></footer>
  <script  th:replace="factura/js/autocomplete-productos :: javascript"></script> 
 
 </body>

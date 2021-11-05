@@ -27,6 +27,9 @@ public class DetalleFactura  implements Serializable{
 	@JoinColumn(name="producto_id")
 	private Producto producto;
 	
+	
+	
+	
 
 	public Long getId() {
 		return id;

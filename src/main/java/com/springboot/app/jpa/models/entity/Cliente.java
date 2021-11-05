@@ -184,6 +184,20 @@ public class Cliente  implements Serializable{
 
 
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return nombre + " " + apellido;
+	}
+
+
+
+
+
+
+
+
+
 	private static final long serialVersionUID = 1L;
 
 }

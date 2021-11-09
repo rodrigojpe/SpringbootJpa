@@ -99,7 +99,7 @@ public class FacturaController {
 			Model model,
 			RedirectAttributes flash) {
 		
-		Factura factura = clienteService.findFacturaById(id);
+		Factura factura =  clienteService.fetchFacturaByIdWhitClienteWhitDetalleFacturaWhitProducto(id) ;  //clienteService.findFacturaById(id);
 		
 		if (factura == null) {
 			flash.addFlashAttribute("error", "La factura no existe !!!");
@@ -110,6 +110,24 @@ public class FacturaController {
 		model.addAttribute("titulo", "Factura : " .concat(factura.getDescripcion()));
 	
 		return "factura/ver";
+	}
+	
+	
+	@GetMapping("/eliminar/{id}")
+	public String eliminar(@PathVariable(value="id") Long id, RedirectAttributes flash) {
+		
+		Factura factura = clienteService.findFacturaById(id);
+		
+		if(factura != null) {
+			clienteService.deleteFactura(id);
+			flash.addFlashAttribute("success", "Factura Eliominada Con exito!");
+			return "redirect:/ver/" + factura.getCliente().getId();
+		}
+		
+		
+		flash.addFlashAttribute("error", "Factura no existe en la BD :(, no se pudo eliminar");
+		return "redirect:/listar";
+			
 	}
 	
 	

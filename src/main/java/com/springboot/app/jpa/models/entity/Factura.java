@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -50,6 +51,7 @@ public class Factura implements Serializable{
 		this.items = new ArrayList<DetalleFactura>();
 	}
 
+	@PrePersist
 	public void prePersist() {
 		
 		createAt = new Date();

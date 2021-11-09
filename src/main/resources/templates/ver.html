@@ -9,7 +9,7 @@
 	<br>
 	
 	<h4 class="card-title">
-		<a class="btn btn-light btn-xs" th:href="@{'/facturas/form/' + ${cliente.id}}" th:text="'Crear Factura'"></a>
+		<a class="btn btn-secondary btn-sm" th:href="@{'/facturas/form/' + ${cliente.id}}" th:text="'Crear Factura'"></a>
 	</h4>
 
 	<div class=" container py-4">
@@ -42,6 +42,7 @@
 						<th>Fecha</th>
 						<th>Total</th>
 						<th> ver</th>
+						<th>Eliminar</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -51,6 +52,7 @@
 						<td th:text="${factura.createAt}"></td>
 						<td th:text="${factura.total}"></td>
 						<td> <a  class="btn btn-primary btn-xs" th:href="@{'/facturas/ver/' + ${factura.id}}"  th:text="'Detalle'"> </a> </td>
+						<td> <a  class="btn btn-danger btn-xs" th:href="@{'/facturas/eliminar/' + ${factura.id}}"  th:text="'Eliminar'"> </a> </td>
 					</tr>
 				</tbody>
 			</table>

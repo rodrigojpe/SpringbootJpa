@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
 <meta charset="UTF-8">
 <title th:text="${titulo}"></title>
@@ -8,6 +8,7 @@
 <link  rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
 </head>
 <body>
+
 <header th:fragment="header">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
@@ -21,28 +22,41 @@
           <a class="nav-link active" aria-current="page" th:href="@{/listar}">Home</a>
         </li>
       </ul>
+      
+      <ul class="nav nav-pills  align-items-end">
+      	  <li> <a class="btn btn-sm btn-outline-secondary" th:href="@{/login}"> Sign In</a>  </li> 
+      	  
+      </ul>
+      
+       <ul class="nav nav-pills  align-items-end">
+      	  <li> 
+      	  	<form th:action="@{/logout}" method="post">
+      	  		<button onclick="document.getElemntById('logoutForm').submit();" type="submit">SinOut</button>
+      	  	</form>
+      	  </li> 
+      	  
+      </ul>
     </div>
   </div>
 </nav>
 
+<div>
+	<div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
+	<div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
+	<div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
+	<div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
+	
+</div>
+
 </header>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 <footer th:fragment="footer" class="container">
 
 <hr>
+<p sec:authorize="isAuthenticated()"> 
+ Usuario logeado:   <span sec:authentication="name"></span> | Roles: <span sec:authentication="principal.authorities" ></span> </p>
 
 <p>Power  by</p>
 <p>Footer </p>

@@ -5,13 +5,7 @@
 
 <header th:replace="layout/layout :: header"></header>
 
-<div>
-	<div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
-	<div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
-	<div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
-	<div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
-	
-</div>
+
 
 <div class="container">
 <h1 th:text="${titulo}" class="text-secondary text-center"></h1>

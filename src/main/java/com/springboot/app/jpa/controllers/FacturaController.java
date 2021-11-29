@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ import com.springboot.app.jpa.models.entity.Factura;
 import com.springboot.app.jpa.models.entity.Producto;
 import com.springboot.app.jpa.models.service.IClienteService;
 
+@Secured("ROLE_ADMIN")
 @Controller
 @RequestMapping("/facturas")
 @SessionAttributes("factura")

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.www.thymeleaf.org/extras/spring-security" >
 <head th:replace="layout/layout :: head"></head>
 <body>
 
@@ -9,17 +9,17 @@
 
 <div class="container">
 <h1 th:text="${titulo}" class="text-secondary text-center"></h1>
-<a th:href="@{/form}"> Crear Cliente</a>
+<a  sec:authorize="hasRole('ROLE_ADMIN')"     th:href="@{/form}"> Crear Cliente</a>
 <table class="table">
 	<thead>
 		<tr>
-		<th>ID</th>
+		<th sec:authorize="hasRole('ROLE_USER')"  >ID</th>
 		<th>Nombre</th>
 		<th>Apellido</th>
 		<th>Email</th>
 		<th>Fecha</th>
-		<th>Crear Factura</th>
-		<th>Acción</th>
+		<th sec:authorize="hasRole('ROLE_ADMIN')" >Crear Factura</th>
+		<th sec:authorize="hasRole('ROLE_ADMIN')">Acción</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -30,10 +30,10 @@
 		<td th:text="${cliente.apellido}"></td>
 		<td th:text="${cliente.email}"></td>
 		<td th:text="${cliente.createAt}"></td>
-		<td><a class="btn btn-success btn-xs ml-5" th:href="@{'/facturas/form/' + ${cliente.id}}" th:text="'Crear Factura'"></a> </td>
+		<td><a sec:authorize="hasRole('ROLE_ADMIN')"   class="btn btn-success btn-xs ml-5" th:href="@{'/facturas/form/' + ${cliente.id}}" th:text="'Crear Factura'"></a> </td>
 		<td>
-		<a class="btn btn-primary" th:href="@{/form/} + ${cliente.id}"  th:text="'Editar'"></a>
-		<a class="btn btn-danger" th:href="@{/eliminar/} + ${cliente.id}"  th:text="'eliminar'" onclick="return confirm('Esta seguro ?')" ></a>
+		<a sec:authorize="hasRole('ROLE_ADMIN')"  class="btn btn-primary" th:href="@{/form/} + ${cliente.id}"  th:text="'Editar'"></a>
+		<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-danger" th:href="@{/eliminar/} + ${cliente.id}"  th:text="'eliminar'" onclick="return confirm('Esta seguro ?')" ></a>
 		</td>
 	</tr> 
 	</tbody>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+		<div class="container py-4">
+			<div>
+			lo sentimos Usuario no tiene permisos suficiente : 
+			<span  th:text="${#httpServletRequest.remoteUser}"></span>				
+			</div>
+			<a th:href="@{/listar}" class="btn btn-primary" role="button">Ir al inicio</a>
+		</div>
+		
+
+
+<footer th:replace="layout/layout :: footer" ></footer>
+</body>
+</html>
